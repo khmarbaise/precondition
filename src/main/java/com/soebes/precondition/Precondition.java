@@ -28,7 +28,6 @@ public final class Precondition {
    * @return The supplied object as convenient.
    */
   public static Integer requireGreaterThanZeroInteger(Integer integerValue, String message) {
-    System.out.println("Hello World.");
     if (integerValue == null) {
       throw new IllegalArgumentException(message);
     }
