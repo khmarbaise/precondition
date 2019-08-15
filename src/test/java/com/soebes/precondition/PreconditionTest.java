@@ -1,12 +1,8 @@
 package com.soebes.precondition;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 
-import java.util.UnknownFormatConversionException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -76,35 +72,5 @@ class PreconditionTest {
       Integer integerValue = Integer.MAX_VALUE;
       assertThat(Precondition.requireGreaterThanZeroInteger(integerValue, "The failure message")).isSameAs(integerValue);
     }
-  }
-
-  void doSomethingWithoutAnyException() {
-    return;
-  }
-
-  @Test
-  void name() {
-    int zeroValue = 0;
-    assertThat(zeroValue);
-  }
-
-  void doSomethingWithException() {
-    throw new IllegalStateException();
-  }
-  @Test
-  void firstTest() {
-    int zeroValue = 0;
-    assertThat(zeroValue).isOne();
-
-    int oneValue = 1;
-    assertThat(oneValue).isOne();
-
-
-    assertThatCode(() -> doSomethingWithoutAnyException()).doesNotThrowAnyException();
-    assertThatIllegalStateException().isThrownBy(() -> doSomethingWithException()).withMessage("Test");
-
-    assertThatExceptionOfType(UnknownFormatConversionException.class)
-        .isThrownBy(() -> doSomethingWithException())
-        .withMessage("XXX");
   }
 }
